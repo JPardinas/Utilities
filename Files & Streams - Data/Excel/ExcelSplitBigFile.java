@@ -38,18 +38,19 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class TestExcel {
 	
-	static String fileName = "plantillaSGEDevo.xlsx";
-	static String path = "C:/Users/jpardinas/Desktop/pruebaspdf/";
+	//Set file name and loc
+	static String fileName = "filename.xlsx";
+	static String path = "pathtofile/";
+	//Number of rows for each file
 	static int maxRows = 50000;
 	static int fichero = 0;
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		
-		File file = new File("C:/Users/jpardinas/Desktop/pruebaspdf/plantillaSGEDevo.xlsx");
+		File file = new File(path + filename);
 		
 
-		
 		
 		OPCPackage opcPackage;
 		try {
