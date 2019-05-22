@@ -1,9 +1,9 @@
-List of dependencys:
+**List of dependencys:**
 
-org.eclipse.swt.win32.win32.x86-3.5.1.jar
-xmlbeans-2.4.0.jar
-poi-3.10-FINAL.jar
-poi-ooxml-3.10-FINAL.jar
-poi-ooxml-schemas-3.10-FINAL.jar
-junit-4.8.2.jar
-dom4j-1.6.1.jar
+1.  org.eclipse.swt.win32.win32.x86-3.5.1.jar
+2.  xmlbeans-2.4.0.jar
+3.  poi-3.10-FINAL.jar
+4.  poi-ooxml-3.10-FINAL.jar
+5.  poi-ooxml-schemas-3.10-FINAL.jar
+6.  junit-4.8.2.jar
+7.  dom4j-1.6.1.jar
