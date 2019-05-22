@@ -47,13 +47,13 @@ public class SplitExcel {
 	
 	/**
 	 * <PRE>
-	 * Nombre del método: splitExcel
-	 * Código de proyecto: INCDSG
+	 * Nombre del mtodo: splitExcel
+	 * Cdigo de proyecto: INCDSG
 	 * SplitExcel 
 	 * Caso de uso: <rellenar> 
-	 * Descripción: 
+	 * Descripcin: 
 	 *	<rellenar>
-	 * Fecha de creación: 21/05/2019
+	 * Fecha de creacin: 21/05/2019
 	 * </PRE>
 	 * @author jpardinas
 	 * @param newPath
@@ -95,13 +95,13 @@ public class SplitExcel {
 	
 	/**
 	 * <PRE>
-	 * Nombre del método: splitWorkbook
-	 * Código de proyecto: INCDSG
+	 * Nombre del mtodo: splitWorkbook
+	 * Cdigo de proyecto: INCDSG
 	 * SplitExcel 
 	 * Caso de uso: <rellenar> 
-	 * Descripción: 
+	 * Descripcin: 
 	 *	<rellenar>
-	 * Fecha de creación: 21/05/2019
+	 * Fecha de creacin: 21/05/2019
 	 * </PRE>
 	 * @author jpardinas
 	 * @param workbook
@@ -122,31 +122,31 @@ public class SplitExcel {
         int rowSize = sheet.getRow(0).getLastCellNum();
         
         
-        //Tamaño de las columnas
+        //Tamao de las columnas
         List<Integer> cellWidth = new ArrayList<Integer>();
         //Textos del header del archivo
         List<String> headerString = new ArrayList<String>();
         
-        //Estilos de los headers y de la información de las columnas
+        //Estilos de los headers y de la informacin de las columnas
         List<XSSFCellStyle> headerCellStyles = new ArrayList<XSSFCellStyle>();
         List<XSSFCellStyle> dataCellStyles = new ArrayList<XSSFCellStyle>();
         
         
         //Seteamos informacion
         for (int a = 0; a < rowSize; a++) {
-        	//Tamaño y String headers
+        	//Tamao y String headers
         	cellWidth.add(sheet.getColumnWidth(a));
         	headerString.add(sheet.getRow(0).getCell(a).getStringCellValue());
         	
         	//Creamos un estilo por defecto
         	XSSFCellStyle headerStyle = (XSSFCellStyle) wb.createCellStyle();
-        	//Clonamos y añadimos a la lista el estilo del workbook importado
+        	//Clonamos y aadimos a la lista el estilo del workbook importado
         	headerStyle.cloneStyleFrom(sheet.getRow(0).getCell(a).getCellStyle());
         	headerCellStyles.add(headerStyle);
         	
         	//Creamos un estilo por defecto
         	XSSFCellStyle dataStyle = (XSSFCellStyle) wb.createCellStyle();
-        	//Clonamos y añadimos a la lista el estilo del workbook importado
+        	//Clonamos y aadimos a la lista el estilo del workbook importado
         	try {
         		dataStyle.cloneStyleFrom(sheet.getRow(1).getCell(a).getCellStyle());
 			} catch (Exception e) {
@@ -173,7 +173,7 @@ public class SplitExcel {
         	//Si se alcanza el numero de filas maximo
             if (rowCount == maxRows || z > (sheet.getLastRowNum())) {
 
-            	//Seteamos el tamaño de las columnas
+            	//Seteamos el tamao de las columnas
             	for (int a = 0; a < rowSize; a++) {
             		sh.setColumnWidth(a, cellWidth.get(a));
             	}
@@ -182,7 +182,7 @@ public class SplitExcel {
             	writeWorkBooks(wb);
                 wb.dispose();
                 
-                //Inicializamos la información
+                //Inicializamos la informacin
             	wb = new SXSSFWorkbook(SplitExcel.onMemoryFiles);
             	sh = (SXSSFSheet) wb.createSheet();
             	nuevoLibro = true;
@@ -201,13 +201,13 @@ public class SplitExcel {
 
                     	//Creamos un estilo por defecto
                     	XSSFCellStyle headerStyle = (XSSFCellStyle) wb.createCellStyle();
-                    	//Clonamos y añadimos a la lista el estilo del workbook importado
+                    	//Clonamos y aadimos a la lista el estilo del workbook importado
                     	headerStyle.cloneStyleFrom(sheet.getRow(0).getCell(a).getCellStyle());
                     	headerCellStyles.add(headerStyle);
                     	
                     	//Creamos un estilo por defecto
                     	XSSFCellStyle dataStyle = (XSSFCellStyle) wb.createCellStyle();
-                    	//Clonamos y añadimos a la lista el estilo del workbook importado
+                    	//Clonamos y aadimos a la lista el estilo del workbook importado
                     	try {
                     		dataStyle.cloneStyleFrom(sheet.getRow(1).getCell(a).getCellStyle());
             			} catch (Exception e) {
@@ -278,13 +278,13 @@ public class SplitExcel {
 	
 	/**
 	 * <PRE>
-	 * Nombre del método: setCellValue
-	 * Código de proyecto: INCDSG
+	 * Nombre del mtodo: setCellValue
+	 * Cdigo de proyecto: INCDSG
 	 * SplitExcel 
 	 * Caso de uso: <rellenar> 
-	 * Descripción: 
+	 * Descripcin: 
 	 *	<rellenar>
-	 * Fecha de creación: 21/05/2019
+	 * Fecha de creacin: 21/05/2019
 	 * </PRE>
 	 * @author jpardinas
 	 * @param newCell
@@ -332,13 +332,13 @@ public class SplitExcel {
 	
 	/**
 	 * <PRE>
-	 * Nombre del método: writeWorkBooks
-	 * Código de proyecto: INCDSG
+	 * Nombre del mtodo: writeWorkBooks
+	 * Cdigo de proyecto: INCDSG
 	 * SplitExcel 
 	 * Caso de uso: <rellenar> 
-	 * Descripción: 
+	 * Descripcin: 
 	 *	<rellenar>
-	 * Fecha de creación: 21/05/2019
+	 * Fecha de creacin: 21/05/2019
 	 * </PRE>
 	 * @author jpardinas
 	 * @param wbs
