@@ -1,8 +1,6 @@
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -33,6 +31,7 @@ public class Inicio {
 	private Button buttonTextInTo;
 	private Integer searchMode;
 	private Text labelErrors;
+	private Button buttonStart;
 	
 	public Inicio () {
 		initialize();
@@ -278,35 +277,47 @@ public class Inicio {
 	
 	private void createButton(Composite composite) {
 		
-		Button button = new Button(composite, SWT.CENTER);
+		buttonStart = new Button(composite, SWT.CENTER);
 		GridData gridDataLabelId = new GridData(SWT.RIGHT, SWT.NONE, false, false);
 		gridDataLabelId.widthHint = 100;
-		button.setLayoutData(gridDataLabelId);
-		button.setText("Start");
+		buttonStart.setLayoutData(gridDataLabelId);
+		buttonStart.setText("Start");
 		
-		button.addSelectionListener(new SelectionListener() {
+		buttonStart.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				
 				if (validValues()) {
 					
+					buttonStart.setEnabled(false);
 					File testPath = new File (textFilePath.getText());
 					File testCopyPath = new File (textNewFilePath.getText());
-					labelResult.setText("Searching...");
+//					labelResult.setText("Searching...");
 					
 					if (!testPath.exists()) {
 						labelResult.setText("File Path not found");
 					} else if (!testCopyPath.exists()) {
 						labelResult.setText("Copy File Path not found");
 					} else {
-						List<String> result = SearchFile.searchForFiles(textTextToSearch.getText(), textFilePath.getText(), textNewFilePath.getText(), searchMode);
-						labelResult.setText("Total Files (" + result.size() + "): ");
-						for (String resultString: result) {
-							labelResult.setText(labelResult.getText().concat(resultString).concat(", "));
-						}
 						
-						labelErrors.setText("Total Errors: " + SearchFile.getNumErrors() + "     ");
+						display.update();
+						
+						Display.getDefault().asyncExec(new Runnable() {
+					        public void run() {
+					        	
+						        SearchFile runnable = new SearchFile(textTextToSearch.getText(), textFilePath.getText(), 
+						        		textNewFilePath.getText(), searchMode, labelResult, labelErrors, buttonStart);
+						        runnable.run();
+					        }
+					    });
+						
+						
+						
+
+						
+						
+						
 					}
 					
 					
