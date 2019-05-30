@@ -1,0 +1,24 @@
+@ComponentScan({ "com.jpardinas.utils", "com.jpardinas.example" })
+public class MainStandAlone {
+
+    @Autowired
+    private TestComponent test;
+
+    public static void main(final String[] args) {
+
+
+        final ApplicationContext context = new AnnotationConfigApplicationContext(Inicio.class);
+        final MainStandAlone p = context.getBean(MainStandAlone.class);
+        p.start(args);
+
+    }
+
+
+    private void start(final String[] args) {
+        test.test();
+        test.testConsultarOperativaMovimientos();
+
+    }
+
+
+}
